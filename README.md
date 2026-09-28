@@ -1,1 +1,2 @@
 # Pesos-Euros---US-Dollars
+This is C++ code that converts Mexican Pesos and euros to U.S. Dollars. You can run it by copying and pasting it into a C++ online compiler like GDB or Programiz, then running it. You then answer the prompts asking for the amount of pesos and euros while it does the mathematical conversion itself. This code helped me understand how to effectively use static_cast and the modulo (%) operator correctly.
