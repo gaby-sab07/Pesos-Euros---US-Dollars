@@ -1,2 +1,36 @@
 # Pesos-Euros---US-Dollars
 This is C++ code that converts Mexican Pesos and euros to U.S. Dollars. You can run it by copying and pasting it into a C++ online compiler like GDB or Programiz, then running it. You then answer the prompts asking for the amount of pesos and euros while it does the mathematical conversion itself. This code helped me understand how to effectively use static_cast and the modulo (%) operator correctly.
+
+#include <iostream>
+#include <typeinfo>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+	const double DOL2MEX = 17.47;
+	const double DOL2EURO = 0.94;
+	double pesos, euros;
+	int wholedollarsp, centdollarsp, wholedollarse, centdollarse, wholetotal, centtotal;
+	cout << "Mexican Peso and Euro to U.S. Dollar Converter" << endl << endl;
+	cout << "Please enter the amount in Pesos: ";
+	cin >> pesos;
+	cout << "Please enter the amount in Euros: ";
+	cin >> euros;
+	wholedollarsp = static_cast<int>(pesos / DOL2MEX);
+	centdollarsp = static_cast<int>(round(((pesos / DOL2MEX) - wholedollarsp) * 100.0));
+	wholedollarsp += centdollarsp / 100;
+	wholedollarse = static_cast<int>(euros / DOL2EURO);
+	centdollarse = static_cast<int>(round(((euros / DOL2EURO) - wholedollarse) * 100.0));
+	wholedollarse += centdollarse / 100;
+	wholetotal = wholedollarsp + wholedollarse + (centdollarsp + centdollarse) / 100;
+	centtotal = (centdollarsp + centdollarse) % 100;
+	cout << endl << endl << "Mexican Peso and Euro to U.S. Dollar Converter" << endl << endl;
+	cout << fixed << setprecision(2);
+	cout << setw(10) << pesos << " pesos:" << setw(8) << wholedollarsp << " US dollars with " << setw(2) << centdollarsp << " cents" << endl << endl;
+	cout << setw(10) << euros << " euros:" << setw(8) << wholedollarse << " US dollars with " << setw(2) << centdollarse << " cents" << endl << endl;
+	cout << setw(17) << "Total:" << setw(8) << wholetotal << " US dollars with " << setw(2) << centtotal << " cents" << endl << endl;
+	return 0;
+}
